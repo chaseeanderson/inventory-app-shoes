@@ -29,14 +29,30 @@ export default function LogIn({ setUser }) {
 
   return (
     <div>
-      <div className="form-container" onSubmit={handleSubmit}>
-        <form autoComplete="off" >
-          <label>Email</label>
-          <input type="text" name="email" value={credentials.email} onChange={handleChange} required />
-          <label>Password</label>
-          <input type="password" name="password" value={credentials.password} onChange={handleChange} required />
-          <button type="submit">LOG IN</button>
-        </form>
+      <div className="columns" onSubmit={handleSubmit}>
+        <div className="card column is-8 is-offset-2">
+          <form autoComplete="off">
+
+            <div className="card-content">
+              <div className="field">
+                <label className="label">Email</label>
+                <input className="input" type="text" name="email" value={credentials.email} onChange={handleChange} required />
+              </div>
+
+              <div className="field">
+                <label className="label">Password</label>
+                <input className="input" type="password" name="password" value={credentials.password} onChange={handleChange} required />
+              </div>
+            </div>
+
+            <div className="card-footer">
+              <div className="card-footer-item">
+                <button className="button" type="submit">LOG IN</button>
+              </div>
+            </div>
+
+          </form>
+        </div>
       </div>
       <p className="error-message">&nbsp;{error}</p>
     </div>

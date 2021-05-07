@@ -31,6 +31,11 @@ export default function LogIn({ setUser }) {
     <div>
       <div className="columns" onSubmit={handleSubmit}>
         <div className="card column is-8 is-offset-2">
+          <div className="card-header">
+            <p className="card-header-title is-centered">
+              Log In Below! Don't have an account? Smash the Sign Up button.
+            </p>
+          </div>
           <form autoComplete="off">
 
             <div className="card-content">

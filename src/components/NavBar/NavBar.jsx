@@ -11,14 +11,18 @@ export default function NavBar({ setUser, user }) {
   }
 
   return(
-    <nav>
-      <span>Welcome, {user.name}</span>
-      &nbsp; | &nbsp;
-      <Link to="/orders">Order History</Link>
-      &nbsp; | &nbsp;
-      <Link to="/orders/new">New Order</Link>
-      &nbsp; | &nbsp;
-      <Link to="" onClick={handleLogOut}>Log Out</Link>
+    <nav className="navbar is-fixed-top is-primary">
+      <div className="navbar-menu">
+        <div className="navbar-start">
+          <p className="navbar-item">Welcome, {user.name}</p>
+          <Link className="navbar-item" to="/orders">Order History</Link>
+          <Link className="navbar-item" to="/orders/new">New Order</Link>
+        </div>
+        <div className="navbar-end">
+          <Link className="navbar-item" to="" onClick={handleLogOut}>Log Out</Link>
+        </div>
+
+      </div>
     </nav>
   );
 }

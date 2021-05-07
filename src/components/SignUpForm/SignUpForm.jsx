@@ -41,6 +41,11 @@ export default class SignUpForm extends Component {
     return (
       <div className="columns is-vcentered">
         <div className="card column is-8 is-offset-2">
+        <div className="card-header">
+            <p className="card-header-title is-centered">
+              Sign Up Below! Already have an account? Smash the Log In button.
+            </p>
+          </div>
           <form autoComplete="off" onSubmit={this.handleSubmit}>
 
             <div className="card-content">

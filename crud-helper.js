@@ -18,5 +18,10 @@ const Order = require('./models/order');
 
 // main();
 
+let productsCrud = (async function productsIndex() {
+  const products = await Product.find({});
+  console.log(products)
+})();
+
 // Local Vars
 let u, p, o;

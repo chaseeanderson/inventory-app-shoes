@@ -11,9 +11,6 @@ module.exports = function(req, res, next) {
       // if valid token, decoded will be the token's entire payload
       // if invalid, err will be sent
       req.user = err ? null : decoded.user;
-      // TODO if your app cares.... (optional)
-      req.exp = err ? null : new Date(decoded.exp * 1000);
-      // still need this though
       return next();
     });
   } else {

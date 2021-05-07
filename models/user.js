@@ -18,7 +18,9 @@ const userSchema = new Schema({
     trim: true,
     minLength: 3,
     required: true
-  }
+  },
+  access: Boolean,
+  admin: Boolean
 }, {
   timestamps: true,
   toJSON: {

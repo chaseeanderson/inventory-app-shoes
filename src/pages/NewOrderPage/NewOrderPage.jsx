@@ -17,20 +17,29 @@ export default function NewOrderPage() {
 
     async function getPurchaseOrder() {
       const fetchPurchaseOrder = await ordersAPI.getOrder();
-      console.log(fetchPurchaseOrder)
       setPurchaseOrder(fetchPurchaseOrder)
     }
     getPurchaseOrder();
-    
+
   }, []);
+
+  // Event Handlers
+  async function handleAddToOrder(productId) {
+    const updatedOrder = await ordersAPI.addToOrder(productId)
+    console.log(updatedOrder)
+    setPurchaseOrder(updatedOrder);
+  }
 
   return(
     <div className="columns">
       <div className="column is-half">
-        <ProdList products={products} />
+        <ProdList 
+          products={products} 
+          handleAddToOrder={handleAddToOrder}
+        />
       </div>
       <div className="column is-half">
-        <OrderDetail />
+        <OrderDetail purchaseOrder={purchaseOrder} />
       </div>
     </div>
   );

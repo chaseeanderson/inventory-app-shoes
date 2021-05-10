@@ -11,7 +11,7 @@ const lineItemSchema = new Schema({
 });
 
 const orderSchema = new Schema({
-  vendor: { type: String, required: true },
+  vendor: String,
   isSubmitted: { type: Boolean, default: false },
   isPaid: { type: Boolean, default: false },
   lineItems: [productSchema],
@@ -29,9 +29,24 @@ orderSchema.virtual('orderTotal').get(function() {
 orderSchema.statics.getPurchaseOrder = function(userId) {
   return this.findOneAndUpdate(
     { user: userId, isSubmitted: false },
+    // create new order doc if one doesn't exist
     { user: userId },
     { upsert: true, new: true }
   );
 };
+
+orderSchema.methods.addProductToOrder = async function (productId) {
+  // check to see if product is already in order
+  const lineItem = this.lineItems.find(lineItem => lineItem.product._id.equals(productId));
+  if (lineItem) {
+    // lineItem.quantity++;
+    return;
+  } else {
+    const product = await mongoose.model('Product').findById(productId);
+    this.lineItems.push({ product });
+  }
+
+  return this.save();
+}
 
 module.exports = mongoose.model('Order', orderSchema);

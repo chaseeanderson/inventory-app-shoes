@@ -1,4 +1,4 @@
-export default function ProdItem({ name, category, variation, quantity }) {
+export default function ProdItem({ id, name, category, variation, quantity, handleAddToOrder }) {
   return(
     <div className="card">
       <div className="card-content">
@@ -7,6 +7,11 @@ export default function ProdItem({ name, category, variation, quantity }) {
         {/* this is an array vv */}
         {/* <p className="content">{variation.variationTitle}</p> */}
         <p className="content">Qty: {quantity}</p>
+      </div>
+      <div className="card-footer">
+        <div className="card-footer-item">
+          <button className="button" onClick={() => handleAddToOrder(id)} type="submit">ADD</button>
+        </div>
       </div>
     </div>
   )

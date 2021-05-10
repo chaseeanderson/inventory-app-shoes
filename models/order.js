@@ -12,6 +12,7 @@ const lineItemSchema = new Schema({
 
 const orderSchema = new Schema({
   vendor: { type: String, required: true },
+  isSubmitted: { type: Boolean, default: false },
   isPaid: { type: Boolean, default: false },
   lineItems: [productSchema],
   commission: Number,
@@ -24,3 +25,11 @@ orderSchema.virtual('orderTotal').get(function() {
   let total = this.lineItems.reduce((total, item) => item.price + total, 0);
   return total += (total * this.commission)  
 });
+
+orderSchema.statics.getPurchaseOrder = function(userId) {
+  return this.findOneAndUpdate(
+    { user: userId, isSubmitted: false },
+    { user: userId },
+    { upsert: true, new: true }
+  );
+};

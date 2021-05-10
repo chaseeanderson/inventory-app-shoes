@@ -26,6 +26,7 @@ app.use(require('./config/checkToken'));
 app.use('/api/users', require('./routes/api/users'));
 // Protected Routes
 app.use('/api/products', ensureLoggedIn, require('./routes/api/products'));
+app.use('/api/orders', ensureLoggedIn, require('./routes/api/orders'));
 
 // The following "catch all" route (note the *) is necessary 
 // to return the index.hmtl on all non-AJAX reqs. 

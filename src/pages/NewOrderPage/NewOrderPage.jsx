@@ -17,8 +17,11 @@ export default function NewOrderPage() {
 
     async function getPurchaseOrder() {
       const fetchPurchaseOrder = await ordersAPI.getOrder();
+      console.log(fetchPurchaseOrder)
       setPurchaseOrder(fetchPurchaseOrder)
     }
+    getPurchaseOrder();
+    
   }, []);
 
   return(

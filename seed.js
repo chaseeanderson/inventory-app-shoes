@@ -2,6 +2,7 @@ require('dotenv').config();
 require('./config/database');
 
 const Product = require('./models/product');
+const Order = require('./models/order');
 const randomNum = Math.floor(Math.random() * 100);
 
 

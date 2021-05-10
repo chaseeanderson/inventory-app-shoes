@@ -15,7 +15,7 @@ const orderSchema = new Schema({
   isSubmitted: { type: Boolean, default: false },
   isPaid: { type: Boolean, default: false },
   lineItems: [productSchema],
-  commission: Number,
+  commission: { type: Number, default: 0 },
   user: { type: Schema.Types.ObjectId, ref: 'User' }
 },{
   timestamps: true
@@ -33,3 +33,5 @@ orderSchema.statics.getPurchaseOrder = function(userId) {
     { upsert: true, new: true }
   );
 };
+
+module.exports = mongoose.model('Order', orderSchema);

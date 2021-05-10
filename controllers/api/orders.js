@@ -1,4 +1,4 @@
-import Order from '../../models/order';
+const Order = require('../../models/order');
 
 module.exports = {
   purchaseOrder
@@ -6,5 +6,6 @@ module.exports = {
 
 async function purchaseOrder(req, res) {
   const purchaseOrder = await Order.getPurchaseOrder(req.user._id);
+  console.log('test ', purchaseOrder)
   res.json(purchaseOrder);
 }

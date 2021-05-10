@@ -25,3 +25,4 @@ orderSchema.virtual('orderTotal').get(function() {
   return total += (total * this.commission)  
 });
 
+console.log('nothing changed')

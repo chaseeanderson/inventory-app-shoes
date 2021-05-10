@@ -11,12 +11,12 @@ export default function NavBar({ setUser, user }) {
   }
 
   return(
-    <nav className="navbar is-fixed-top is-primary">
+    <nav className="navbar is-primary">
       <div className="navbar-menu">
         <div className="navbar-start">
           <p className="navbar-item">Welcome, {user.name}</p>
-          <Link className="navbar-item" to="/orders">Order History</Link>
-          <Link className="navbar-item" to="/orders/new">New Order</Link>
+          <Link className="navbar-item" to="/orders">My Kicks</Link>
+          <Link className="navbar-item" to="/orders/new">Create Order</Link>
         </div>
         <div className="navbar-end">
           <Link className="navbar-item" to="" onClick={handleLogOut}>Log Out</Link>

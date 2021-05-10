@@ -24,5 +24,3 @@ orderSchema.virtual('orderTotal').get(function() {
   let total = this.lineItems.reduce((total, item) => item.price + total, 0);
   return total += (total * this.commission)  
 });
-
-console.log('nothing changed')

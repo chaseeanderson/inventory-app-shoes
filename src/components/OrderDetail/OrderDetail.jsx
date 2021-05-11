@@ -1,6 +1,11 @@
+import { useState } from 'react';
 import LineItem from '../LineItem/LineItem';
 
 export default function OrderDetail({ purchaseOrder }) {
+  const [lineItemQty, setLineItemQty] = useState(0);
+  const [lineItemPrice, setLineItemPrice] = useState(0);
+  const [commission, setCommission] = useState(0);
+
   if (!purchaseOrder) return null;
   console.log(purchaseOrder)
   return(

@@ -3,7 +3,7 @@ export default function LineItem({ formData, setFormData, handleChange, category
   return(
     <tr>
       <td>
-        <input name={`${id} quantity`} onChange={handleChange} value={formData.qty} type="text" className="input" />
+        <input name={`${id} quantity`} onChange={handleChange} value={formData.quantity} type="number" className="input" />
       </td>
 
       <td>
@@ -11,7 +11,7 @@ export default function LineItem({ formData, setFormData, handleChange, category
       </td>
 
       <td>
-        <input name={`${id} price`} onChange={handleChange} value={formData.price} type="text" className="input" />
+        <input name={`${id} price`} onChange={handleChange} value={formData.price} type="number" className="input" />
       </td>
 
       {/* gonna need some shoe size data */}

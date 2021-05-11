@@ -39,6 +39,7 @@ export default function NewOrderPage() {
       <div className="column is-half">
         <OrderDetail 
           purchaseOrder={purchaseOrder}
+          setPurchaseOrder={setPurchaseOrder}
           commission={purchaseOrder.commission} 
           lineItems={purchaseOrder.lineItems} 
           orderTotal={purchaseOrder.orderTotal} 

@@ -12,7 +12,7 @@ const lineItemSchema = new Schema({
 });
 
 const orderSchema = new Schema({
-  vendor: String,
+  vendor: { type: String, default: '' },
   isSubmitted: { type: Boolean, default: false },
   isPaid: { type: Boolean, default: false },
   lineItems: [lineItemSchema],

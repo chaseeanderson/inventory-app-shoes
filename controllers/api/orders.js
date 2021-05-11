@@ -2,7 +2,8 @@ const Order = require('../../models/order');
 
 module.exports = {
   purchaseOrder,
-  addToOrder
+  addToOrder,
+  submit
 }
 
 async function purchaseOrder(req, res) {
@@ -15,4 +16,8 @@ async function addToOrder(req, res) {
   const purchaseOrder = await Order.getPurchaseOrder(req.user._id);
   await purchaseOrder.addProductToOrder(req.params.productId);
   res.json(purchaseOrder); 
+}
+
+async function submit(req, res) {
+  console.log(req.body)
 }

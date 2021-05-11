@@ -28,7 +28,6 @@ export default function NewOrderPage() {
     const updatedOrder = await ordersAPI.addToOrder(productId)
     setPurchaseOrder(updatedOrder);
   }
-console.log(purchaseOrder)
   return(
     <div className="columns">
       <div className="column is-half">
@@ -39,6 +38,7 @@ console.log(purchaseOrder)
       </div>
       <div className="column is-half">
         <OrderDetail 
+          purchaseOrder={purchaseOrder}
           commission={purchaseOrder.commission} 
           lineItems={purchaseOrder.lineItems} 
           orderTotal={purchaseOrder.orderTotal} 

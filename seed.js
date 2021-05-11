@@ -8,6 +8,8 @@ const randomNum = Math.floor(Math.random() * 100);
 
 (async function() {
 
+  await Order.deleteMany({});
+
   await Product.deleteMany({});
   const products = await Product.create([
     { 

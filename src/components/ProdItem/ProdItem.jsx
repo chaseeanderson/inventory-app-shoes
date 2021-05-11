@@ -10,7 +10,7 @@ export default function ProdItem({ id, name, category, variation, quantity, hand
       </div>
       <div className="card-footer">
         <div className="card-footer-item">
-          <button className="button" onClick={() => handleAddToOrder(id)} type="submit">ADD</button>
+          <button className="button" onClick={() => handleAddToOrder(id)}>ADD</button>
         </div>
       </div>
     </div>

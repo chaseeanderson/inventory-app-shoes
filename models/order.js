@@ -3,22 +3,24 @@ const Schema = mongoose.Schema;
 const productSchema = require('./productSchema');
 
 const lineItemSchema = new Schema({
-  quantity: { type: Number, default: 0, required: true },
+  quantity: { type: Number, default: 0 },
   product: productSchema,
   price: { type: Number, default: 0 }
 }, {
-  timestamps: true
+  timestamps: true,
+  toJSON: { virtuals: true }
 });
 
 const orderSchema = new Schema({
   vendor: String,
   isSubmitted: { type: Boolean, default: false },
   isPaid: { type: Boolean, default: false },
-  lineItems: [productSchema],
+  lineItems: [lineItemSchema],
   commission: { type: Number, default: 0 },
   user: { type: Schema.Types.ObjectId, ref: 'User' }
 },{
-  timestamps: true
+  timestamps: true,
+  toJSON: { virtuals: true }
 });
 
 orderSchema.virtual('orderTotal').get(function() {

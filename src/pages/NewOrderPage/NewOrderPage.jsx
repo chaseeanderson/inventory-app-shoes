@@ -26,10 +26,9 @@ export default function NewOrderPage() {
   // Event Handlers
   async function handleAddToOrder(productId) {
     const updatedOrder = await ordersAPI.addToOrder(productId)
-    console.log(updatedOrder)
     setPurchaseOrder(updatedOrder);
   }
-
+console.log(purchaseOrder)
   return(
     <div className="columns">
       <div className="column is-half">
@@ -39,7 +38,11 @@ export default function NewOrderPage() {
         />
       </div>
       <div className="column is-half">
-        <OrderDetail purchaseOrder={purchaseOrder} />
+        <OrderDetail 
+          commission={purchaseOrder.commission} 
+          lineItems={purchaseOrder.lineItems} 
+          orderTotal={purchaseOrder.orderTotal} 
+        />
       </div>
     </div>
   );

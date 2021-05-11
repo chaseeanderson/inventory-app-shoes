@@ -2,13 +2,13 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const productSchema = new Schema({
-  name: { type: String, required: true },
+  name: String,
   category: String,
   variation: [{
     upc: String,
     variationTitle: String
   }],
-  quantity: Number
+  quantity: { type: Number, default: 0 }
 }, {
   timestamps: true
 });

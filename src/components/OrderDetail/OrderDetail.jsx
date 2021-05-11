@@ -7,7 +7,6 @@ export default function OrderDetail({ purchaseOrder }) {
   const [commission, setCommission] = useState(0);
 
   if (!purchaseOrder) return null;
-  console.log(purchaseOrder)
   return(
     <div>
       <h1 className="is-size-2">Purchase Order Details</h1>
@@ -27,7 +26,10 @@ export default function OrderDetail({ purchaseOrder }) {
               <tbody>
                 {purchaseOrder.lineItems.map(item => <LineItem
                   key={item._id}
-                  quantity={item.quantity}
+                  lineItemQty={lineItemQty}
+                  setLineItemQty={setLineItemQty}
+                  lineItemPrice={lineItemPrice}
+                  setLineItemPrice={setLineItemPrice}
                   category={item.product.category}
                   name={item.product.name}
                 />)}

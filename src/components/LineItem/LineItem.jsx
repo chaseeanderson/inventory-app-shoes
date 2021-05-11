@@ -1,8 +1,13 @@
-export default function LineItem({ quantity, category, name }) {
+export default function LineItem({ lineItemQty, setLineItemQty, lineItemPrice, setLineItemPrice, category, name }) {
+
+  async function handleChange() {
+    
+  }
+
   return(
     <tr>
       <td>
-        <input type="text" className="input" />
+        <input name={"qty"} type="text" className="input" />
       </td>
 
       <td>
@@ -10,7 +15,7 @@ export default function LineItem({ quantity, category, name }) {
       </td>
 
       <td>
-        <input type="text" className="input" />
+        <input name={"price"} type="text" className="input" />
       </td>
 
       {/* gonna need some shoe size data */}

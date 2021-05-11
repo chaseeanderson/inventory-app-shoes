@@ -2,11 +2,15 @@ import { useState } from 'react';
 import LineItem from '../LineItem/LineItem';
 
 export default function OrderDetail({ purchaseOrder }) {
-  const [lineItemQty, setLineItemQty] = useState(0);
-  const [lineItemPrice, setLineItemPrice] = useState(0);
-  const [commission, setCommission] = useState(0);
+  const [formData, setFormData] = useState({});
 
   if (!purchaseOrder) return null;
+
+  function handleChange(evt) {
+    const newFormData = { ...formData, [evt.target.name]: evt.target.value }
+    setFormData(newFormData);
+  }
+
   return(
     <div>
       <h1 className="is-size-2">Purchase Order Details</h1>
@@ -26,12 +30,12 @@ export default function OrderDetail({ purchaseOrder }) {
               <tbody>
                 {purchaseOrder.lineItems.map(item => <LineItem
                   key={item._id}
-                  lineItemQty={lineItemQty}
-                  setLineItemQty={setLineItemQty}
-                  lineItemPrice={lineItemPrice}
-                  setLineItemPrice={setLineItemPrice}
+                  id={item._id}
                   category={item.product.category}
                   name={item.product.name}
+                  formData={formData}
+                  setFormData={setFormData}
+                  handleChange={handleChange}
                 />)}
               </tbody>
             </table>
@@ -40,7 +44,7 @@ export default function OrderDetail({ purchaseOrder }) {
 
             <div className="field">
               <label className="label">Commission</label>
-              <input type="text" className="input" />
+              <input name="commission" value={formData.commission} onChange={handleChange} type="text" className="input" />
             </div>
 
             <h1>Total</h1>

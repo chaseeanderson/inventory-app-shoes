@@ -1,9 +1,15 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import LineItem from '../LineItem/LineItem';
 import * as ordersAPI from '../../utilities/orders-api';
 
 export default function OrderDetail({ purchaseOrder, setPurchaseOrder }) {
   const [formData, setFormData] = useState({});
+  const [lineItems, setLineItems] = useState([]);
+
+  useEffect(function() {
+    if (purchaseOrder.lineItems) setLineItems([...purchaseOrder.lineItems]);
+  }, [purchaseOrder])
+  
   // console.log(purchaseOrder)
   if (!purchaseOrder) return null;
 
@@ -11,7 +17,7 @@ export default function OrderDetail({ purchaseOrder, setPurchaseOrder }) {
     const newFormData = { ...formData, [evt.target.name]: evt.target.value }
     setFormData(newFormData);
   }
-  console.log('data', formData)
+  console.log(lineItems)
   async function handleSubmit(evt) {
     evt.preventDefault();
     // hopefully refactor this to just setNewOrder(await the fetch req)
@@ -19,6 +25,8 @@ export default function OrderDetail({ purchaseOrder, setPurchaseOrder }) {
     const newstuff = await ordersAPI.submitOrder(formData);
     console.log('newstuff', newstuff);
   }
+
+  // console.log(purchaseOrder)
 
   return(
     <div>
@@ -42,14 +50,16 @@ export default function OrderDetail({ purchaseOrder, setPurchaseOrder }) {
                 </tr>
               </thead>
               <tbody>
-                {purchaseOrder.lineItems.map(item => <LineItem
+                {purchaseOrder.lineItems.map((item, idx) => <LineItem
                   key={item._id}
-                  id={item._id}
+                  idx={idx}
                   category={item.product.category}
                   name={item.product.name}
                   formData={formData}
-                  setFormData={setFormData}
                   handleChange={handleChange}
+                  lineItems={lineItems}
+                  setLineItems={setLineItems}
+                  id={item._id}
                 />)}
               </tbody>
             </table>

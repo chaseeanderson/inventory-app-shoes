@@ -9,6 +9,6 @@ export function addToOrder(productId) {
   return sendRequest(`${BASE_URL}/purchase-order/products/${productId}`, 'POST');
 }
 
-export function submitOrder(formData) {
+export function submitOrder(formData) { 
   return sendRequest(`${BASE_URL}/purchase-order/submit`, 'POST', formData)
 }

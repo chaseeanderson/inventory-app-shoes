@@ -1,9 +1,22 @@
-export default function LineItem({ formData, setFormData, handleChange, category, name, id }) {
+import { useEffect } from "react";
+
+export default function LineItem({ formData, category, name, idx, lineItems, setLineItems, id }) {
+
+  // useEffect(function() {
+  //   if (lineItems[idx]) setLineItems({...lineItems, quantity: lineItems[idx].quantity})
+  // }, [lineItems])
+
+  function handleChange(evt) {
+    const copy = [...lineItems];
+    copy[idx] = {...copy[idx], [evt.target.name]: evt.target.value}
+    setLineItems(copy);
+  }
 
   return(
+    lineItems.length ? 
     <tr>
       <td>
-        <input name={`${id} quantity`} onChange={handleChange} value={formData.quantity} type="number" className="input" />
+        <input name="quantity" onChange={handleChange} value={lineItems[idx].quantity} type="number" className="input" />
       </td>
 
       <td>
@@ -11,11 +24,14 @@ export default function LineItem({ formData, setFormData, handleChange, category
       </td>
 
       <td>
-        <input name={`${id} price`} onChange={handleChange} value={formData.price} type="number" className="input" />
+        <input name="price" onChange={handleChange} value={lineItems[idx].price} type="number" className="input" />
       </td>
 
       {/* gonna need some shoe size data */}
       
     </tr>
+    :
+    <>
+    </>
   );
 }

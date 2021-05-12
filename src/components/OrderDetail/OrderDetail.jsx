@@ -22,11 +22,11 @@ export default function OrderDetail({ purchaseOrder, setPurchaseOrder }) {
     evt.preventDefault();
     // hopefully refactor this to just setNewOrder(await the fetch req)
     
-    const newstuff = await ordersAPI.submitOrder(formData);
-    console.log('newstuff', newstuff);
+    const updatedPurchaseOrder = await ordersAPI.submitOrder(formData);
+    setPurchaseOrder(updatedPurchaseOrder);
   }
 
-  console.log(formData)
+  console.log('NEW: ', purchaseOrder);
 
   return(
     <div>
@@ -65,10 +65,10 @@ export default function OrderDetail({ purchaseOrder, setPurchaseOrder }) {
 
             <div className="field">
               <label className="label">Commission</label>
-              <input name="commission" value={formData.commission || ''} onChange={handleChange} type="number" className="input" />
+              <input name="commission" placeholder="please enter as decimal" value={formData.commission || ''} onChange={handleChange} type="number" className="input" />
             </div>
 
-            <h1>Total</h1>
+            <h1>Total: {purchaseOrder.orderTotal}</h1>
 
             <div className="card-footer">
               <div className="card-footer-item">

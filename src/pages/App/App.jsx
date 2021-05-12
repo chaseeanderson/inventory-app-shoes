@@ -6,6 +6,7 @@ import NewOrderPage from '../NewOrderPage/NewOrderPage';
 import InventoryPage from '../InventoryPage/InventoryPage';
 import NavBar from '../../components/NavBar/NavBar';
 import './App.css';
+import OrderIndexPage from '../OrderIndexPage/OrderIndexPage';
 
 export default function App() {
 
@@ -21,7 +22,7 @@ export default function App() {
             <NewOrderPage />
           </Route>
           <Route path='/orders'>
-            <InventoryPage />
+            <OrderIndexPage />
           </Route>
           <Redirect to='/orders' />
         </Switch>

@@ -3,7 +3,8 @@ const Order = require('../../models/order');
 module.exports = {
   purchaseOrder,
   addToOrder,
-  submit
+  submit,
+  index
 }
 
 async function purchaseOrder(req, res) {
@@ -23,4 +24,9 @@ async function submit(req, res) {
   const purchaseOrder = await Order.getPurchaseOrder(req.user._id)
   const submitData = await purchaseOrder.submitOrder(req.body);
   res.json(submitData);
+}
+
+async function index(req, res) {
+  const orders = await Order.find({ isSubmitted: true });
+  res.json(orders);
 }

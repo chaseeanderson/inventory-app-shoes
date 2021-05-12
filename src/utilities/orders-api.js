@@ -5,6 +5,10 @@ export function getOrder() {
   return sendRequest(`${BASE_URL}/purchase-order`);
 }
 
+export function getAll() {
+  return sendRequest(BASE_URL);
+}
+
 export function addToOrder(productId) {
   return sendRequest(`${BASE_URL}/purchase-order/products/${productId}`, 'POST');
 }

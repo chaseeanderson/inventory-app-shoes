@@ -14,7 +14,7 @@ export default function OrderDetail({ purchaseOrder, setPurchaseOrder }) {
   if (!purchaseOrder) return null;
 
   function handleChange(evt) {
-    const newFormData = { ...formData, [evt.target.name]: evt.target.value }
+    const newFormData = { ...formData, lineItems: lineItems, [evt.target.name]: evt.target.value }
     setFormData(newFormData);
   }
   console.log(lineItems)
@@ -26,7 +26,7 @@ export default function OrderDetail({ purchaseOrder, setPurchaseOrder }) {
     console.log('newstuff', newstuff);
   }
 
-  // console.log(purchaseOrder)
+  console.log(formData)
 
   return(
     <div>
@@ -55,11 +55,8 @@ export default function OrderDetail({ purchaseOrder, setPurchaseOrder }) {
                   idx={idx}
                   category={item.product.category}
                   name={item.product.name}
-                  formData={formData}
-                  handleChange={handleChange}
                   lineItems={lineItems}
                   setLineItems={setLineItems}
-                  id={item._id}
                 />)}
               </tbody>
             </table>

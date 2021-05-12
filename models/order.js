@@ -51,7 +51,11 @@ orderSchema.methods.addProductToOrder = async function (productId) {
 }
 
 orderSchema.methods.submitOrder = async function (data) {
-  await console.log(data.vendor)
+  this.vendor = data.vendor;
+  this.lineItems = data.lineItems;
+  this.commission = data.commission;
+  this.isSubmitted = true;
+  return this.save();
 }
 
 module.exports = mongoose.model('Order', orderSchema);

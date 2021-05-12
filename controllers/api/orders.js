@@ -8,7 +8,7 @@ module.exports = {
 
 async function purchaseOrder(req, res) {
   const purchaseOrder = await Order.getPurchaseOrder(req.user._id);
-  console.log('controller: ', purchaseOrder)
+  // console.log('controller: ', purchaseOrder)
   res.json(purchaseOrder);
 }
 
@@ -19,7 +19,8 @@ async function addToOrder(req, res) {
 }
 
 async function submit(req, res) {
-  console.log(req.body)
-  const purchaseOrder = await Order.getPurchaseOrder(req.user._id);
-  const orderForm = await Order.submitOrder(req.body)
+  // console.log(req.body)
+  const purchaseOrder = await Order.getPurchaseOrder(req.user._id)
+  const submitData = await purchaseOrder.submitOrder(req.body);
+  res.json(submitData);
 }

@@ -22,6 +22,10 @@ let productsCrud = (async function productsIndex() {
   const products = await Product.find({});
   console.log(products)
 })();
+let ordersCrud = (async function ordersIndex() {
+  const orders = await Order.find({});
+  console.log(orders)
+})();
 
 // Local Vars
 let u, p, o;

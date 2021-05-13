@@ -36,7 +36,8 @@ async function index(req, res) {
 async function removeOrder(req, res) {
   await Order.findOneAndDelete(
     { _id: req.params.id }, 
-    (err, order) => order && err
+    (err, removedOrder) => removedOrder && err
   );
-  res.json('');
+  const updatedOrders = await Order.find({ isSubmitted: true }).sort({ updatedAt: 'desc' }).exec();
+  res.json(updatedOrders);
 }

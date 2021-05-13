@@ -1,26 +1,19 @@
 import { useEffect, useState } from 'react';
 import ProdList from '../../components/ProdList/ProdList';
 import OrderDetail from '../../components/OrderDetail/OrderDetail';
-import * as productsAPI from '../../utilities/products-api';
 import * as ordersAPI from '../../utilities/orders-api';
+import * as productsAPI from '../../utilities/products-api';
 
-export default function NewOrderPage() {
-  const [products, setProducts] = useState([]);
+export default function NewOrderPage({ products, setProducts }) {
+  // const [products, setProducts] = useState([]);
   const [purchaseOrder, setPurchaseOrder] = useState([]);
 
   useEffect(function() {
-    async function getProducts() {
-      const productsIndex = await productsAPI.getAll();
-      setProducts(productsIndex);
-    }
-    getProducts();
-
     async function getPurchaseOrder() {
       const fetchPurchaseOrder = await ordersAPI.getOrder();
       setPurchaseOrder(fetchPurchaseOrder)
     }
     getPurchaseOrder();
-
   }, []);
 
   // Event Handlers

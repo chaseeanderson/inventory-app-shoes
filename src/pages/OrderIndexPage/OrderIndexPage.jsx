@@ -10,13 +10,15 @@ export default function OrderIndexPage() {
       const ordersIndex = await ordersAPI.getAll();
       setOrders(ordersIndex);
     }
+    
     getOrders();
-  }, [])
+  }, []);
 
   async function handleRemoveOrder(id) {
+    // using filter to reflect the updated list is the more efficient approach
+    const updatedOrders = orders.filter(order => order._id !== id);
     await ordersAPI.removeOrder(id);
-    const ordersIndex = await ordersAPI.getAll();
-    setOrders(ordersIndex);
+    setOrders(updatedOrders);
   }
 
   return(

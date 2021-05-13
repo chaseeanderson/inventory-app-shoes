@@ -11,5 +11,16 @@ async function index(req, res) {
 }
 
 async function updateQty(req, res) {
-  console.log('update ', req.params.id)
+  
+  // const product = await Product.findOneAndUpdate(
+  //   { _id: req.params.id },
+  //   { quantity: [req.body.quantity + quantity] },
+  //   { new: true }
+  // );
+  const product = await Product.findById(req.params.id)
+  const newQty = parseInt(product.quantity) + parseInt(req.body.quantity)
+  product.quantity = newQty;
+  product.save();
+
+  res.json(product);
 }

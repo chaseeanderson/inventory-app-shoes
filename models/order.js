@@ -44,30 +44,20 @@ orderSchema.methods.addProductToOrder = async function (productId) {
     return;
   } else {
     const product = await mongoose.model('Product').findById(productId);
-    // console.log('product', product)
     this.lineItems.push({ product });
-    // lineItem.product = product;
   }
 
   return this.save();
 }
 
-// orderSchema.methods.updateInventory = async function (data) {
-//   this.populate('product').exec(function (err, order) {
-//     console.log(err)
-//   })
-// }
-
 orderSchema.methods.submitOrder = async function (data) {
-  // const product = this.populate('product').exec(function(err, product) {
-  //   if (err) console.log('error', err)
     this.vendor = data.vendor;
     this.lineItems = data.lineItems;
     // update the product qty
-    this.lineItems.forEach((item, idx) => {
-      const updatedQty = parseInt(item.product.quantity) + parseInt(data.lineItems[idx].quantity);
-      item.product.quantity = 1;
-    });
+    // this.lineItems.forEach((item, idx) => {
+    //   const updatedQty = parseInt(item.product.quantity) + parseInt(data.lineItems[idx].quantity);
+    //   item.product.quantity = 1;
+    // });
     this.commission = data.commission;
     this.isSubmitted = true;
 

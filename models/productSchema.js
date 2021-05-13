@@ -8,7 +8,7 @@ const productSchema = new Schema({
     upc: String,
     variationTitle: String
   }],
-  quantity: { type: Number, default: 0 }
+  quantity: { type: Number }
 }, {
   timestamps: true
 });

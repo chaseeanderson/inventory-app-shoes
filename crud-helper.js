@@ -12,7 +12,7 @@ const Order = require('./models/order');
 //     name: 'billy',
 //     email: 'goat@shack.com',
 //     password: 'baba'
-//   });
+//   })
 //   console.log(user);
 // }
 

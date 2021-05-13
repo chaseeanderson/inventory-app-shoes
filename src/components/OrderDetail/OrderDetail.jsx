@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import LineItem from '../LineItem/LineItem';
 import * as ordersAPI from '../../utilities/orders-api';
+import * as productsAPI from '../../utilities/products-api';
 
 export default function OrderDetail({ purchaseOrder, setPurchaseOrder, products, setProducts }) {
   const [formData, setFormData] = useState({});
@@ -26,6 +27,10 @@ export default function OrderDetail({ purchaseOrder, setPurchaseOrder, products,
   console.log('lineItems', lineItems)
   async function handleSubmit(evt) {
     evt.preventDefault();
+    // send the lineItem quantities to update the inventory
+    for (const item of lineItems) {
+      await productsAPI.updateProductQty(item);
+    }
     const updatedPurchaseOrder = await ordersAPI.submitOrder(formData);
     setPurchaseOrder(updatedPurchaseOrder);
   }

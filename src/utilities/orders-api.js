@@ -14,5 +14,9 @@ export function addToOrder(productId) {
 }
 
 export function submitOrder(formData) { 
-  return sendRequest(`${BASE_URL}/purchase-order/submit`, 'POST', formData)
+  return sendRequest(`${BASE_URL}/purchase-order/submit`, 'POST', formData);
+}
+
+export function removeOrder(id) {
+  return sendRequest(`${BASE_URL}/${id}`, 'DELETE');
 }

@@ -4,7 +4,8 @@ module.exports = {
   purchaseOrder,
   addToOrder,
   submit,
-  index
+  index,
+  removeOrder
 }
 
 async function purchaseOrder(req, res) {
@@ -31,4 +32,12 @@ async function submit(req, res) {
 async function index(req, res) {
   const orders = await Order.find({ isSubmitted: true });
   res.json(orders);
+}
+
+async function removeOrder(req, res) {
+  await Order.findOneAndDelete(
+    { _id: req.params.id }, 
+    (err, order) => order && err
+  );
+  res.json('');
 }

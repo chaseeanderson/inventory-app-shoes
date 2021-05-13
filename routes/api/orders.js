@@ -8,7 +8,9 @@ router.get('/', ordersCtrl.index);
 
 // POST to /api/orders
 router.post('/purchase-order/products/:productId', ordersCtrl.addToOrder);
-router.post('/purchase-order/submit', ordersCtrl.submit)
+router.post('/purchase-order/submit', ordersCtrl.submit);
 
+// DELETE to /api/orders
+router.delete('/:id', ordersCtrl.removeOrder);
 
 module.exports = router;

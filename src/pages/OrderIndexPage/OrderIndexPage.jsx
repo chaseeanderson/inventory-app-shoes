@@ -13,6 +13,12 @@ export default function OrderIndexPage() {
     getOrders();
   }, [])
 
+  async function handleRemoveOrder(id) {
+    await ordersAPI.removeOrder(id);
+    const ordersIndex = await ordersAPI.getAll();
+    setOrders(ordersIndex);
+  }
+
   return(
     <div>
       <h1 className="is-size-2">Orders</h1>
@@ -22,6 +28,7 @@ export default function OrderIndexPage() {
             <th>Id</th>
             <th>Vendor</th>
             <th>Total</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -30,6 +37,7 @@ export default function OrderIndexPage() {
             id={order._id}
             vendor={order.vendor}
             total={order.orderTotal}
+            handleRemoveOrder={handleRemoveOrder}
           /> )}
         </tbody>
       </table>

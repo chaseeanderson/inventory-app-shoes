@@ -48,21 +48,14 @@ orderSchema.methods.addProductToOrder = async function (productId) {
   }
 
   return this.save();
-}
+};
 
 orderSchema.methods.submitOrder = async function (data) {
     this.vendor = data.vendor;
     this.lineItems = data.lineItems;
-    // update the product qty
-    // this.lineItems.forEach((item, idx) => {
-    //   const updatedQty = parseInt(item.product.quantity) + parseInt(data.lineItems[idx].quantity);
-    //   item.product.quantity = 1;
-    // });
     this.commission = data.commission;
     this.isSubmitted = true;
-
-  // })
   return this.save();
-}
+};
 
 module.exports = mongoose.model('Order', orderSchema);

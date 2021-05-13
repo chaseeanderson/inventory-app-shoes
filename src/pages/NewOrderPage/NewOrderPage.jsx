@@ -40,9 +40,8 @@ export default function NewOrderPage() {
         <OrderDetail 
           purchaseOrder={purchaseOrder}
           setPurchaseOrder={setPurchaseOrder}
-          commission={purchaseOrder.commission} 
-          lineItems={purchaseOrder.lineItems} 
-          orderTotal={purchaseOrder.orderTotal} 
+          products={products} 
+          setProducts={setProducts} 
         />
       </div>
     </div>

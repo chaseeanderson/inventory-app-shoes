@@ -2,31 +2,35 @@ import { useState, useEffect } from 'react';
 import LineItem from '../LineItem/LineItem';
 import * as ordersAPI from '../../utilities/orders-api';
 
-export default function OrderDetail({ purchaseOrder, setPurchaseOrder }) {
+export default function OrderDetail({ purchaseOrder, setPurchaseOrder, products, setProducts }) {
   const [formData, setFormData] = useState({});
   const [lineItems, setLineItems] = useState([]);
 
   useEffect(function() {
     if (purchaseOrder.lineItems) setLineItems([...purchaseOrder.lineItems]);
+
+    // (function updateProductQty() {
+    //   console.log('products', products)
+    // })();
   }, [purchaseOrder])
   
   // console.log(purchaseOrder)
   if (!purchaseOrder) return null;
 
+
+
   function handleChange(evt) {
     const newFormData = { ...formData, lineItems: lineItems, [evt.target.name]: evt.target.value }
     setFormData(newFormData);
   }
-  console.log(lineItems)
+  console.log('lineItems', lineItems)
   async function handleSubmit(evt) {
     evt.preventDefault();
-    // hopefully refactor this to just setNewOrder(await the fetch req)
-    
     const updatedPurchaseOrder = await ordersAPI.submitOrder(formData);
     setPurchaseOrder(updatedPurchaseOrder);
   }
 
-  console.log('NEW: ', purchaseOrder);
+  console.log('NEW purchase: ', purchaseOrder);
 
   return(
     <div>

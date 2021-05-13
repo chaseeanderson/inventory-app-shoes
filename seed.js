@@ -27,7 +27,7 @@ const randomNum = Math.floor(Math.random() * 100);
         {variationTitle: '11.5'},
         {variationTitle: '12'}
       ], 
-        quantity: Math.floor(Math.random() * 100) 
+        quantity: 0
     },
     { 
       name: '\'07 AN20', 
@@ -44,7 +44,7 @@ const randomNum = Math.floor(Math.random() * 100);
         {variationTitle: '11.5'},
         {variationTitle: '12'}
       ], 
-        quantity: Math.floor(Math.random() * 100) 
+        quantity: 0
     },
     { 
       name: 'LOW', 
@@ -61,7 +61,7 @@ const randomNum = Math.floor(Math.random() * 100);
         {variationTitle: '11.5'},
         {variationTitle: '12'}
       ], 
-        quantity: Math.floor(Math.random() * 100) 
+        quantity: 0
     },
   ]);
 

@@ -24,13 +24,12 @@ async function addToOrder(req, res) {
 async function submit(req, res) {
   console.log(req.body)
   const purchaseOrder = await Order.getPurchaseOrder(req.user._id);
-  // await purchaseOrder.updateInventory(req.body);
   const submitData = await purchaseOrder.submitOrder(req.body);
   res.json(submitData);
 }
 
 async function index(req, res) {
-  const orders = await Order.find({ isSubmitted: true });
+  const orders = await Order.find({ isSubmitted: true }).sort({ updatedAt: 'desc' }).exec();
   res.json(orders);
 }
 

@@ -24,7 +24,10 @@ export default function App() {
           <Route path='/orders'>
             <OrderIndexPage />
           </Route>
-          <Redirect to='/orders' />
+          <Route path='/inventory'>
+            <InventoryPage />
+          </Route>
+          <Redirect to='/inventory' />
         </Switch>
       </>
         :

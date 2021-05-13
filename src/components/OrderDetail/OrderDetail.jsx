@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import LineItem from '../LineItem/LineItem';
 import * as ordersAPI from '../../utilities/orders-api';
 import * as productsAPI from '../../utilities/products-api';
@@ -6,25 +7,20 @@ import * as productsAPI from '../../utilities/products-api';
 export default function OrderDetail({ purchaseOrder, setPurchaseOrder, products, setProducts }) {
   const [formData, setFormData] = useState({});
   const [lineItems, setLineItems] = useState([]);
+  const history = useHistory();
 
   useEffect(function() {
     if (purchaseOrder.lineItems) setLineItems([...purchaseOrder.lineItems]);
-
-    // (function updateProductQty() {
-    //   console.log('products', products)
-    // })();
-  }, [purchaseOrder])
+  }, [purchaseOrder]);
   
-  // console.log(purchaseOrder)
   if (!purchaseOrder) return null;
 
-
-
+  // Event Handlers
   function handleChange(evt) {
     const newFormData = { ...formData, lineItems: lineItems, [evt.target.name]: evt.target.value }
     setFormData(newFormData);
   }
-  console.log('lineItems', lineItems)
+  
   async function handleSubmit(evt) {
     evt.preventDefault();
     // send the lineItem quantities to update the inventory
@@ -33,9 +29,10 @@ export default function OrderDetail({ purchaseOrder, setPurchaseOrder, products,
     }
     const updatedPurchaseOrder = await ordersAPI.submitOrder(formData);
     setPurchaseOrder(updatedPurchaseOrder);
+    setFormData({});
+    setLineItems([]);
+    history.push('/orders')
   }
-
-  console.log('NEW purchase: ', purchaseOrder);
 
   return(
     <div>
@@ -77,8 +74,6 @@ export default function OrderDetail({ purchaseOrder, setPurchaseOrder, products,
               <input name="commission" placeholder="please enter as decimal" value={formData.commission || ''} onChange={handleChange} type="number" className="input" />
             </div>
 
-            <h1>Total: {purchaseOrder.orderTotal}</h1>
-
             <div className="card-footer">
               <div className="card-footer-item">
                 <button type="submit" className="button">Submit</button>
@@ -91,7 +86,7 @@ export default function OrderDetail({ purchaseOrder, setPurchaseOrder, products,
 
         </form>
         :
-        <h1>add items</h1>
+        <h1>Add items</h1>
       }
     </div>
   );

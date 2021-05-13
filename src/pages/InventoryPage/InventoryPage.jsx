@@ -6,23 +6,24 @@ import SearchBar from '../../components/SearchBar/SearchBar';
 
 export default function InventoryPage({ products, searchInput, setSearchInput, setProducts }) {
   const [filteredProducts, setFilteredProducts] = useState(products);
+  console.log('filter, ', filteredProducts)
+  console.log('product, ', products)
+  // useEffect(function() {
 
-  useEffect(function() {
-    async function getProducts() {
-      const productsIndex = await productsAPI.getAll();
-      setProducts(productsIndex);
-    }
-    getProducts();
-  }, []);
+  // }, [searchInput]);
   
-  console.log('hi', products)
   // Event Handlers
   function handleChange(evt) {
     setSearchInput(evt.target.value);
     const searchResults = products.filter(product => 
       product.category.toLowerCase().includes(searchInput.toLowerCase()));
     setFilteredProducts(searchResults);
+    if (evt.target.value === '') setFilteredProducts(products)
   }
+    
+  
+    console.log('search, ', searchInput)
+  
   
   return(
     <div>

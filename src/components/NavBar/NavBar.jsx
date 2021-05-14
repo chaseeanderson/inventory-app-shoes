@@ -12,9 +12,14 @@ export default function NavBar({ setUser, user }) {
 
   return(
     <nav className="navbar has-background-primary-light">
+      <div className="navbar-brand">
+        <Link className="navbar-item pr-0" to="/inventory">
+          <img src="https://i.imgur.com/KVUPWHN.png" alt="running shoe icon" />
+          <p className="navbar-item">Hello, {user.name}!</p>
+        </Link>
+      </div>
       <div className="navbar-menu">
         <div className="navbar-start">
-          <p className="navbar-item">Welcome, {user.name}</p>
           <Link className="navbar-item" to="/orders">My Orders</Link>
           <Link className="navbar-item" to="/inventory">My Kicks</Link>
           <Link className="navbar-item" to="/orders/new">Create Order</Link>

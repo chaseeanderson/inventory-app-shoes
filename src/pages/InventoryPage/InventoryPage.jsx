@@ -17,7 +17,7 @@ export default function InventoryPage({ products, searchInput, setSearchInput, s
   
   return(
     <div>
-      <h1 className="is-size-2">My Kicks</h1>
+      <h1 className="is-size-2 mt-4">My Kicks</h1>
       <div className="columns">
         <div className="column is-3 is-offset-1">
           <SearchBar
@@ -28,7 +28,7 @@ export default function InventoryPage({ products, searchInput, setSearchInput, s
 
       <div className="columns">
         <div className="column is-8 is-offset-2">
-          <div className="table-container">
+          <div style={{ overflow: 'scroll', height: '70vh' }} className="table-container card">
           <table className="table is-fullwidth is-scrollable">
             <thead>
               <tr>

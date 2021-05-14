@@ -51,7 +51,7 @@ export default function LogIn({ setUser }) {
             </div>
 
             <div className="card-footer">
-              <div className="card-footer-item">
+              <div className="card-footer-item pt-5">
                 <button className="button" type="submit">LOG IN</button>
               </div>
             </div>

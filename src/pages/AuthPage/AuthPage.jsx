@@ -6,7 +6,7 @@ export default function AuthPage({ setUser }) {
   const [showLogin, setShowLogin] = useState(true);
   return (
     <main className="hero is-fullheight">
-      <h1 className="is-size-1">Welcome to KICKS!</h1>
+      <h1 className="is-size-1 mt-6">Welcome to KICKS!</h1>
       <h3 className="is-size-3">tracking shoes and taking orders :)</h3>
       <div className="hero-body">
         <div className="container columns">

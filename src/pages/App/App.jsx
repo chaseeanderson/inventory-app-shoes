@@ -23,7 +23,7 @@ export default function App() {
   }, []);
 
   return (
-    <main className='App'>
+    <main className="App has-background-primary-light">
       { user ? 
       <>
         <NavBar user={user} setUser={setUser} />

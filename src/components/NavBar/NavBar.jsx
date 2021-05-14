@@ -11,7 +11,7 @@ export default function NavBar({ setUser, user }) {
   }
 
   return(
-    <nav className="navbar is-primary">
+    <nav className="navbar has-background-primary-light">
       <div className="navbar-menu">
         <div className="navbar-start">
           <p className="navbar-item">Welcome, {user.name}</p>

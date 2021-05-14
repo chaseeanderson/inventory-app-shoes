@@ -23,11 +23,9 @@ export default function OrderIndexPage() {
 
   return(
     <div>
-      <h1 className="is-size-2">Orders</h1>
-      <br />
-      <br />
+      <h1 className="is-size-2 mb-5 mt-4">Orders</h1>
       <div className="columns">
-        <div className="column is-8 is-offset-2">
+        <div className="column card is-8 is-offset-2">
           <table className="table is-fullwidth">
             <thead>
               <tr>

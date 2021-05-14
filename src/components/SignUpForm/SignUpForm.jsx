@@ -71,7 +71,7 @@ export default class SignUpForm extends Component {
             </div>
 
             <div className="card-footer">
-              <div className="card-footer-item">
+              <div className="card-footer-item pt-5">
                 <button className="button" type="submit" disabled={disable}>SIGN UP</button>
               </div>
             </div>

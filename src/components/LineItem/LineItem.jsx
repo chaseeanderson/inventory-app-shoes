@@ -10,16 +10,16 @@ export default function LineItem({ category, name, idx, lineItems, setLineItems 
   return(
     lineItems[idx] ? 
     <tr>
-      <td>
-        <input name="quantity" placeholder="0" onChange={handleChangeItem} value={lineItems[idx].quantity} type="number" className="input" />
+      <td style={{width: '15%'}}>
+        <input name="quantity" onChange={handleChangeItem} value={lineItems[idx].quantity} type="number" className="input" />
       </td>
 
-      <td>
+      <td className="is-size-5">
         {category} {name}
       </td>
 
-      <td>
-        <input name="price" placeholder="0" onChange={handleChangeItem} value={lineItems[idx].price} type="number" className="input" />
+      <td style={{width: '15%'}}>
+        <input name="price" onChange={handleChangeItem} value={lineItems[idx].price} type="number" className="input" />
       </td>
 
       {/* gonna need some shoe size data */}

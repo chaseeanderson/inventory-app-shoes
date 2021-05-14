@@ -25,16 +25,15 @@ export default function OrderDetail({ purchaseOrder, setPurchaseOrder, products,
   
   async function handleSubmit(evt) {
     evt.preventDefault();
-    // setFormData({ ...formData, lineItems: lineItems });
-    // send the lineItem quantities to update the inventory
-    console.log(formData)
     const updatedPurchaseOrder = await ordersAPI.submitOrder(formData);
+    // send the lineItem quantities to update the inventory
     for (const item of lineItems) {
       await productsAPI.updateProductQty(item);
     }
-    // Update state qty for products
+    // Update state
     await updateProdQty(updatedPurchaseOrder);
     setPurchaseOrder(updatedPurchaseOrder);
+    // Reset the form
     setFormData({});
     setLineItems([]);
     history.push('/inventory')
@@ -52,50 +51,54 @@ export default function OrderDetail({ purchaseOrder, setPurchaseOrder, products,
 
   return(
     <div>
-      <h1 className="is-size-2">Purchase Order Details</h1>
+      <h1 className="is-size-2 mb-4">Purchase Order Details</h1>
       {
         purchaseOrder.lineItems ?
         <form className="card" onSubmit={handleSubmit}>
           <div className="card-content">
-            <label className="label">Vendor</label>
-            {/* short circut evaluation */}
-            <input name="vendor" value={formData.vendor || ''} onChange={handleChange} type="text" className="input" />
-            <br />
-            <br />
+            <div className="columns">
+              <div className="column is-6 is-offset-3">
+                <label className="label">Vendor</label>
+                {/* short circut evaluation */}
+                <input name="vendor" value={formData.vendor || ''} onChange={handleChange} type="text" className="input" />
+              </div>
+            </div>
             <hr />
-            <table className="table">
-              <thead>
-                <tr>
-                  <th>Qty</th>
-                  <th>Product</th>
-                  <th>Price</th>
-                </tr>
-              </thead>
-              <tbody>
-                {purchaseOrder.lineItems.map((item, idx) => <LineItem
-                  key={item._id}
-                  idx={idx}
-                  category={item.product.category}
-                  name={item.product.name}
-                  lineItems={lineItems}
-                  setLineItems={setLineItems}
-                />)}
-              </tbody>
-            </table>
+            <div className="columns">
+              <div className="column is-10 is-offset-1">
+
+                <table className="table is-fullwidth">
+                  <thead>
+                    <tr>
+                      <th>Qty</th>
+                      <th>Product</th>
+                      <th>Price</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {purchaseOrder.lineItems.map((item, idx) => <LineItem
+                      key={item._id}
+                      idx={idx}
+                      category={item.product.category}
+                      name={item.product.name}
+                      lineItems={lineItems}
+                      setLineItems={setLineItems}
+                    />)}
+                  </tbody>
+                </table>
+              </div>
+            </div>
             
-            <hr />
+            <hr className="mt-6" />
 
             <div className="field">
               <label className="label">Commission</label>
-              <input name="commission" placeholder="please enter as decimal" value={formData.commission || ''} onChange={handleChange} type="number" className="input" />
+              <input name="commission" placeholder="Please enter as decimal" value={formData.commission || ''} onChange={handleChange} type="number" className="input" />
             </div>
 
             <div className="card-footer">
-              <div className="card-footer-item">
+              <div className="card-footer-item pb-0 pt-5">
                 <button type="submit" className="button">Submit</button>
-              </div>
-              <div className="card-footer-item">
-                <button className="button">Clear</button>
               </div>
             </div>
           </div>

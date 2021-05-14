@@ -22,7 +22,7 @@ export default function NewOrderPage({ products, setProducts }) {
   }
 
   return(
-    <div className="columns">
+    <div className="columns mx-3 mt-3">
       <div className="column is-half">
         <ProdList 
           products={products} 

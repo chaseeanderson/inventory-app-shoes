@@ -17,17 +17,21 @@ export default function OrderDetail({ purchaseOrder, setPurchaseOrder, products,
 
   // Event Handlers
   function handleChange(evt) {
+    
     const newFormData = { ...formData, lineItems: lineItems, [evt.target.name]: evt.target.value }
+    console.log('eh', newFormData)
     setFormData(newFormData);
   }
   
   async function handleSubmit(evt) {
     evt.preventDefault();
+    // setFormData({ ...formData, lineItems: lineItems });
     // send the lineItem quantities to update the inventory
+    console.log(formData)
+    const updatedPurchaseOrder = await ordersAPI.submitOrder(formData);
     for (const item of lineItems) {
       await productsAPI.updateProductQty(item);
     }
-    const updatedPurchaseOrder = await ordersAPI.submitOrder(formData);
     // Update state qty for products
     await updateProdQty(updatedPurchaseOrder);
     setPurchaseOrder(updatedPurchaseOrder);

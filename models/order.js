@@ -23,7 +23,7 @@ const orderSchema = new Schema({
 });
 
 orderSchema.virtual('orderTotal').get(function() {
-  let total = this.lineItems.reduce((total, item) => item.price + total, 0);
+  let total = this.lineItems.reduce((total, item) => (item.price * item.quantity) + total, 0);
   return total += (total * this.commission)  
 });
 

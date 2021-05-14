@@ -3,7 +3,6 @@ export default function LineItem({ category, name, idx, lineItems, setLineItems 
   function handleChangeItem(evt) {
     const copy = [...lineItems];
     copy[idx] = {...copy[idx], [evt.target.name]: evt.target.value}
-    console.log(copy)
     setLineItems(copy);
   }
 

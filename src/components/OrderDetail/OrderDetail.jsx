@@ -17,9 +17,7 @@ export default function OrderDetail({ purchaseOrder, setPurchaseOrder, products,
 
   // Event Handlers
   function handleChange(evt) {
-    
     const newFormData = { ...formData, lineItems: lineItems, [evt.target.name]: evt.target.value }
-    console.log('eh', newFormData)
     setFormData(newFormData);
   }
   
@@ -36,7 +34,7 @@ export default function OrderDetail({ purchaseOrder, setPurchaseOrder, products,
     // Reset the form
     setFormData({});
     setLineItems([]);
-    history.push('/inventory')
+    history.push('/inventory');
   }
 
   // Helpers
@@ -66,7 +64,6 @@ export default function OrderDetail({ purchaseOrder, setPurchaseOrder, products,
             <hr />
             <div className="columns">
               <div className="column is-10 is-offset-1">
-
                 <table className="table is-fullwidth">
                   <thead>
                     <tr>
@@ -102,7 +99,6 @@ export default function OrderDetail({ purchaseOrder, setPurchaseOrder, products,
               </div>
             </div>
           </div>
-
         </form>
         :
         <h1>Add items</h1>

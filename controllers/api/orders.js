@@ -21,10 +21,8 @@ async function addToOrder(req, res) {
 }
 
 async function submit(req, res) {
-  console.log(req.body)
   const purchaseOrder = await Order.getPurchaseOrder(req.user._id);
   const submitData = await purchaseOrder.submitOrder(req.body);
-  console.log('ay, ', submitData)
   res.json(submitData);
 }
 

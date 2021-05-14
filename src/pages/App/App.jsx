@@ -42,7 +42,6 @@ export default function App() {
               products={products}
               searchInput={searchInput}
               setSearchInput={setSearchInput}
-              setProducts={setProducts}
             />
           </Route>
           <Redirect to='/inventory' />

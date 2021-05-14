@@ -4,7 +4,6 @@ import OrderDetail from '../../components/OrderDetail/OrderDetail';
 import * as ordersAPI from '../../utilities/orders-api';
 
 export default function NewOrderPage({ products, setProducts }) {
-  
   const [purchaseOrder, setPurchaseOrder] = useState([]);
 
   useEffect(function() {

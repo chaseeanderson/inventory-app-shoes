@@ -40,7 +40,6 @@ orderSchema.methods.addProductToOrder = async function (productId) {
   // check to see if product is already in order
   const lineItem = this.lineItems.find(lineItem => lineItem.product._id.equals(productId));
   if (lineItem) {
-    console.log('does this happen')
     return;
   } else {
     const product = await mongoose.model('Product').findById(productId);

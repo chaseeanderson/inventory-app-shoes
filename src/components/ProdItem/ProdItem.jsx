@@ -1,16 +1,13 @@
 export default function ProdItem({ id, name, category, variation, quantity, handleAddToOrder }) {
   return(
-    <div className="card">
+    <div className="card mb-3 pb-5">
       <div className="card-content">
-        <p className="content">{category}</p>
-        <p className="content">{name}</p>
-        {/* this is an array vv */}
+        <p className="content is-size-5 has-text-weight-semibold">{category} {name}</p>
+        {/* vv TODO VARIATIONS vv */}
         {/* <p className="content">{variation.variationTitle}</p> */}
-        <p className="content">Qty: {quantity}</p>
-      </div>
-      <div className="card-footer">
-        <div className="card-footer-item">
-          <button className="button" onClick={() => handleAddToOrder(id)}>ADD</button>
+        <div className="content">
+          <p className="content is-pulled-left">Current Qty: {quantity}</p>
+          <button className="button is-small is-pulled-right" onClick={() => handleAddToOrder(id)}>+</button>
         </div>
       </div>
     </div>

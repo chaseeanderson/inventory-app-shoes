@@ -13,7 +13,7 @@ export default function App() {
   const [user, setUser] = useState(getUser());
   const [products, setProducts] = useState([]);
   const [searchInput, setSearchInput] = useState('');
-
+  
   useEffect(function () {
     async function getProducts() {
       const productsIndex = await productsAPI.getAll();

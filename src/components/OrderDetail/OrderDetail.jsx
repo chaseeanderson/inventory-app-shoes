@@ -28,10 +28,22 @@ export default function OrderDetail({ purchaseOrder, setPurchaseOrder, products,
       await productsAPI.updateProductQty(item);
     }
     const updatedPurchaseOrder = await ordersAPI.submitOrder(formData);
+    // Update state qty for products
+    await updateProdQty(updatedPurchaseOrder);
     setPurchaseOrder(updatedPurchaseOrder);
     setFormData({});
     setLineItems([]);
-    history.push('/orders')
+    history.push('/inventory')
+  }
+
+  // Helpers
+  async function updateProdQty(purchaseOrder) {
+    const productCopy = [...products];
+    purchaseOrder.lineItems.forEach(item => {
+      const product = productCopy.find(product => product._id === item.product);
+      product.quantity += item.quantity;
+      return product;
+    });
   }
 
   return(

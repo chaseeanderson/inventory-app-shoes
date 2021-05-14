@@ -4,6 +4,7 @@ import OrderDetail from '../../components/OrderDetail/OrderDetail';
 import * as ordersAPI from '../../utilities/orders-api';
 
 export default function NewOrderPage({ products, setProducts }) {
+  
   const [purchaseOrder, setPurchaseOrder] = useState([]);
 
   useEffect(function() {
@@ -19,7 +20,7 @@ export default function NewOrderPage({ products, setProducts }) {
     const updatedOrder = await ordersAPI.addToOrder(productId)
     setPurchaseOrder(updatedOrder);
   }
-  
+
   return(
     <div className="columns">
       <div className="column is-half">

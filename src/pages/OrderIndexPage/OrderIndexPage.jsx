@@ -24,25 +24,31 @@ export default function OrderIndexPage() {
   return(
     <div>
       <h1 className="is-size-2">Orders</h1>
-      <table className="table">
-        <thead>
-          <tr>
-            <th>Id</th>
-            <th>Vendor</th>
-            <th>Total</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          {orders.map(order => <OrderItem
-            key={order._id}
-            id={order._id}
-            vendor={order.vendor}
-            total={order.orderTotal}
-            handleRemoveOrder={handleRemoveOrder}
-          /> )}
-        </tbody>
-      </table>
+      <br />
+      <br />
+      <div className="columns">
+        <div className="column is-8 is-offset-2">
+          <table className="table is-fullwidth">
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Vendor</th>
+                <th>Total</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              {orders.map(order => <OrderItem
+                key={order._id}
+                id={order._id}
+                vendor={order.vendor}
+                total={order.orderTotal}
+                handleRemoveOrder={handleRemoveOrder}
+              /> )}
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   );
 }

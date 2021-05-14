@@ -1,9 +1,18 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import InventoryItem from '../../components/InventoryItem/InventoryItem';
 import SearchBar from '../../components/SearchBar/SearchBar';
+import * as productsAPI from '../../utilities/products-api';
 
-export default function InventoryPage({ products, searchInput, setSearchInput }) {
+export default function InventoryPage({ products, searchInput, setSearchInput, setProducts }) {
   const [filteredProducts, setFilteredProducts] = useState(products);
+
+  useEffect(function () {
+    async function getProducts() {
+      const productsIndex = await productsAPI.getAll();
+      setProducts(productsIndex);
+    }
+    getProducts();
+  }, []);
 
   // Event Handlers
   function handleChange(evt) {

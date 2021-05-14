@@ -19,7 +19,7 @@ export default function InventoryPage({ products, searchInput, setSearchInput, s
     <div>
       <h1 className="is-size-2 mt-4">My Kicks</h1>
       <div className="columns">
-        <div className="column is-3 is-offset-1">
+        <div className="column is-2 is-offset-1">
           <SearchBar
             handleChange={handleChange}
           />

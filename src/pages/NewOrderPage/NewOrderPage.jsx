@@ -22,13 +22,13 @@ export default function NewOrderPage({ products, setProducts }) {
 
   return(
     <div className="columns mx-3 mt-4">
-      <div className="column is-half">
+      <div className="column is-4">
         <ProdList 
           products={products} 
           handleAddToOrder={handleAddToOrder}
         />
       </div>
-      <div className="column is-half">
+      <div className="column is-8">
         <OrderDetail 
           purchaseOrder={purchaseOrder}
           setPurchaseOrder={setPurchaseOrder}

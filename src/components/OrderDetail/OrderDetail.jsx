@@ -67,9 +67,19 @@ export default function OrderDetail({ purchaseOrder, setPurchaseOrder, products,
                 <table className="table is-fullwidth">
                   <thead>
                     <tr>
-                      <th>Qty</th>
                       <th>Product</th>
                       <th>Price</th>
+                      <th>7.5</th>
+                      <th>8</th>
+                      <th>8.5</th>
+                      <th>9</th>
+                      <th>9.5</th>
+                      <th>10</th>
+                      <th>10.5</th>
+                      <th>11</th>
+                      <th>11.5</th>
+                      <th>12</th>
+                      <th>Total</th>
                     </tr>
                   </thead>
                   <tbody>

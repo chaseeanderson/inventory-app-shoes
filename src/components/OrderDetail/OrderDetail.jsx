@@ -63,36 +63,38 @@ export default function OrderDetail({ purchaseOrder, setPurchaseOrder, products,
             </div>
             <hr />
             <div className="columns">
-              <div className="column is-10 is-offset-1">
-                <table className="table is-fullwidth">
-                  <thead>
-                    <tr>
-                      <th>Product</th>
-                      <th>Price</th>
-                      <th>7.5</th>
-                      <th>8</th>
-                      <th>8.5</th>
-                      <th>9</th>
-                      <th>9.5</th>
-                      <th>10</th>
-                      <th>10.5</th>
-                      <th>11</th>
-                      <th>11.5</th>
-                      <th>12</th>
-                      <th>Total</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {purchaseOrder.lineItems.map((item, idx) => <LineItem
-                      key={item._id}
-                      idx={idx}
-                      category={item.product.category}
-                      name={item.product.name}
-                      lineItems={lineItems}
-                      setLineItems={setLineItems}
-                    />)}
-                  </tbody>
-                </table>
+              <div className="column is-10">
+                <div className="table-container">
+                  <table className="table is-fullwidth is-scrollable">
+                    <thead>
+                      <tr>
+                        <th>Product</th>
+                        <th>Price</th>
+                        <th>7.5</th>
+                        <th>8</th>
+                        <th>8.5</th>
+                        <th>9</th>
+                        <th>9.5</th>
+                        <th>10</th>
+                        <th>10.5</th>
+                        <th>11</th>
+                        <th>11.5</th>
+                        <th>12</th>
+                        <th>Total</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {purchaseOrder.lineItems.map((item, idx) => <LineItem
+                        key={item._id}
+                        idx={idx}
+                        category={item.product.category}
+                        name={item.product.name}
+                        lineItems={lineItems}
+                        setLineItems={setLineItems}
+                      />)}
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
             

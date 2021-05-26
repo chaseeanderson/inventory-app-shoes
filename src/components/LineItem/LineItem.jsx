@@ -40,12 +40,12 @@ export default function LineItem({ category, name, idx, lineItems, setLineItems 
         <input name="price" onChange={handleChangeItem} value={lineItems[idx].price} type="number" className="input" />
       </td>
 
-      {['7.5', '8', '8.5', '9', '9.5', '10', '11.5', '12'].map(variationTitle => {
+      {['7.5', '8', '8.5', '9', '9.5', '10', '10.5', '11', '11.5', '12'].map(variationTitle => {
         const thisVariation = lineItems[idx].variations.find(v => v.variationTitle === variationTitle);
         return(
           <td>
             <input 
-              style={{minWidth: "75px"}} 
+              style={{minWidth: "50px"}} 
               name={variationTitle} 
               onChange={handleChangeVariation} 
               value={thisVariation ? thisVariation.quantity : '0'} 
@@ -56,7 +56,12 @@ export default function LineItem({ category, name, idx, lineItems, setLineItems 
         );
       }) }
       
-      
+      <td>
+        {
+          lineItems[idx].variations.reduce((acc, variation) => acc + parseInt(variation.quantity), 0)
+        }
+      </td>
+
     </tr>
   );
 }

@@ -2,7 +2,6 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const lineItemSchema = new Schema({
-  totalQuantity: { type: Number, default: 0 },
   product: { type: Schema.Types.ObjectId, ref: 'Product' },
   variations: [{
     quantity: { type: Number, default: 0 },
